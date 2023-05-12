@@ -36,29 +36,18 @@ Esportare quindi il diagramma in jpg e caricarlo nella repo. (modificato)
 - appelli_esame 
 - studenti 
 
-
-## table:
+## relationships:
 - dipartimento one_to_many corsi_di_laure
 - corsi_di_laure many_to_many materie
 - materie many_to_many insegnanti
 - materie one_to_many appelli_esame
 - studenti many_to_many appelli_esame(voto d'esame)
 - studneti one_to_many corsi_di_laurea
-- 
 
 
+## table:
 
-
-## relationships:
-
-
-
-
-
-
-
-
-## Table name: books
+## Table name: 
 ## columns: 
 
 
