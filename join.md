@@ -16,10 +16,9 @@ WHERE `degrees`.`name` = 'Corso di Laurea in Economia';
 ### departments
 ### degrees
 
-SELECT `degrees`.`id`, `degrees`.`name`, `degrees`.`level`, `departments`.`id` as 'departments_id' , `departments`.`name` AS 'name_department', `courses`.`name` AS 'course_name' 
+SELECT `degrees`.`id`, `degrees`.`name`, `degrees`.`level`, `departments`.`id` as 'departments_id' , `departments`.`name` AS 'name_department'
 FROM `departments`
 JOIN `degrees` ON `departments`.`id` = `degrees`.`department_id`
-JOIN `courses` ON `degrees`.`id` = `courses`.`degree_id`
 WHERE `departments`.`name` = 'Dipartimento di Neuroscienze'
 AND `degrees`.`level` = 'Magistrale';
 
@@ -45,12 +44,24 @@ AND `teachers`.`surname` = 'Amato';
 ## degrees
 ## departments
 
-SELECT `students`.`id`, `students`.`name` AS 'Student_name' , `students`.`surname` AS 'Student_name', `students`.`registration_number`, `degrees`.`name`
+SELECT `students`.`id`, `students`.`surname` AS 'Student_name', `students`.`name` AS 'Student_name' , `students`.`registration_number`, `degrees`.`name`
 FROM `students`
 JOIN `degrees` on `students`.`degree_id` = `degrees`.`id`
-JOIN `departments` on `degrees`.`department_id` = `departments`.`id`;
-
+JOIN `departments` on `degrees`.`department_id` = `departments`.`id`
+order BY `students`.`surname`, `students`.`name`
 
 5. Selezionare tutti i corsi di laurea con i relativi corsi e insegnanti
+
+# Selezionare tutti i corsi di laurea con i relativi corsi e insegnanti
+
+#taachers
+#courses
+#degrees
+SELECT `degrees`.`id`, `degrees`.`name`, `courses`.`id`, `courses`.`name`, `teachers`.`id`, `teachers`.`name`, `teachers`.`surname`
+FROM `degrees`
+JOIN `courses` on `degrees`.`id` = `courses`.`degree_id`
+JOIN `course_teacher` on `courses`.`id` = `course_teacher`.`course_id`
+JOIN `teachers` ON `course_teacher`.`teacher_id` = `teachers`.`id`
+
 6. Selezionare tutti i docenti che insegnano nel Dipartimento di Matematica (54)
 7. BONUS: Selezionare per ogni studente quanti tentativi d’esame ha sostenuto per superare ciascuno dei suoi esami
