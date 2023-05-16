@@ -35,3 +35,20 @@ SELECT COUNT(*) FROM `departments`;
 
 8. Quanti sono gli insegnanti che non hanno un numero di telefono? (50)
 SELECT COUNT(*) FROM `teachers` WHERE `phone` IS NULL;
+
+9. 
+select count(*) as `total_courses`, cfu from courses group by cfu;
+
+10.
+mysql> select count(*) as `total_students`, YEAR(`date_of_birth`) as `year_of_birth` from students group by year_of_birth;
+
+11.
+
+
+12. Contare gli appelli d'esame del mese di luglio raggruppati per giorno
+ select count(*) as `number_of_exams`, DAY(`date`) as `day`
+    -> from `exams`
+    -> where month(`date`) = 7
+    -> group by `day`;
+
+    
